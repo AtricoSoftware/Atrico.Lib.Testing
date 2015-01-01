@@ -1,15 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atrico.Lib.Testing", "Atrico.Lib.Testing\Atrico.Lib.Testing.csproj", "{EF628FF6-5EE4-4043-82FE-8CAF3AB36787}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atrico.Lib.Testing.Tests", "Atrico.Lib.Testing.Tests\Atrico.Lib.Testing.Tests.csproj", "{39C75F5D-2CAD-4694-B233-7E9D1C23274F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atrico.Lib.Testing.40", "Atrico.Lib.Testing.40\Atrico.Lib.Testing.40.csproj", "{8D94C5F4-1B7C-476F-8CB0-93057AACE1F2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atrico.Lib.Testing.40.Tests", "Atrico.Lib.Testing.40.Tests\Atrico.Lib.Testing.40.Tests.csproj", "{31A551FF-7F27-4E05-BF3C-3B6B978D1A4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +21,6 @@ Global
 		{39C75F5D-2CAD-4694-B233-7E9D1C23274F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39C75F5D-2CAD-4694-B233-7E9D1C23274F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39C75F5D-2CAD-4694-B233-7E9D1C23274F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D94C5F4-1B7C-476F-8CB0-93057AACE1F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D94C5F4-1B7C-476F-8CB0-93057AACE1F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D94C5F4-1B7C-476F-8CB0-93057AACE1F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D94C5F4-1B7C-476F-8CB0-93057AACE1F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{31A551FF-7F27-4E05-BF3C-3B6B978D1A4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31A551FF-7F27-4E05-BF3C-3B6B978D1A4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{31A551FF-7F27-4E05-BF3C-3B6B978D1A4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{31A551FF-7F27-4E05-BF3C-3B6B978D1A4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
