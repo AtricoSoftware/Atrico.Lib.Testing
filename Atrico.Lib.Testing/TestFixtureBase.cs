@@ -9,8 +9,5 @@ namespace Atrico.Lib.Testing
 		/// Random value generator
 		/// </summary>
 		protected static readonly RandomValueGenerator RandomValues = new RandomValueGenerator();
-		
-
-
 	}
 }

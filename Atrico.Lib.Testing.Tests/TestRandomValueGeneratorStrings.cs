@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Atrico.Lib.Assertions;
 using Atrico.Lib.Testing.NUnitAttributes;
@@ -39,53 +40,93 @@ namespace Atrico.Lib.Testing.Tests
 			public ValidateResults(CharTypesAllowed allowed)
 			{
 				if ((allowed & CharTypesAllowed.Space) != 0)
+				{
 					_space = false;
+				}
 				if ((allowed & CharTypesAllowed.Digit) != 0)
+				{
 					_digit = false;
+				}
 				if ((allowed & CharTypesAllowed.Upper) != 0)
+				{
 					_upper = false;
+				}
 				if ((allowed & CharTypesAllowed.Lower) != 0)
+				{
 					_lower = false;
+				}
 				if ((allowed & CharTypesAllowed.Symbol) != 0)
+				{
 					_symbl = false;
+				}
 			}
 
 			public void AddChar(char ch)
 			{
 				if (_space.HasValue)
+				{
 					_space |= ch.IsSpace();
+				}
 				else
+				{
 					Assert.That(ch.IsSpace(), Is.False, "Space");
+				}
 				if (_digit.HasValue)
+				{
 					_digit |= ch.IsDigit();
+				}
 				else
-					Assert.That(ch.IsDigit(), Is.False, ch.ToString());
+				{
+					Assert.That(ch.IsDigit(), Is.False, ch.ToString(CultureInfo.InvariantCulture));
+				}
 				if (_upper.HasValue)
+				{
 					_upper |= ch.IsUppercase();
+				}
 				else
-					Assert.That(ch.IsUppercase(), Is.False, ch.ToString());
+				{
+					Assert.That(ch.IsUppercase(), Is.False, ch.ToString(CultureInfo.InvariantCulture));
+				}
 				if (_lower.HasValue)
+				{
 					_lower |= ch.IsLowercase();
+				}
 				else
-					Assert.That(ch.IsLowercase(), Is.False, ch.ToString());
+				{
+					Assert.That(ch.IsLowercase(), Is.False, ch.ToString(CultureInfo.InvariantCulture));
+				}
 				if (_symbl.HasValue)
+				{
 					_symbl |= ch.IsSymbol();
+				}
 				else
-					Assert.That(ch.IsSymbol(), Is.False, ch.ToString());
+				{
+					Assert.That(ch.IsSymbol(), Is.False, ch.ToString(CultureInfo.InvariantCulture));
+				}
 			}
 
 			public void Validate()
 			{
 				if (_space.HasValue)
+				{
 					Assert.That(_space.Value, Is.True, "Space");
+				}
 				if (_digit.HasValue)
+				{
 					Assert.That(_digit.Value, Is.True, "Digit");
+				}
 				if (_upper.HasValue)
+				{
 					Assert.That(_upper.Value, Is.True, "Uppercase");
+				}
 				if (_lower.HasValue)
+				{
 					Assert.That(_lower.Value, Is.True, "Lowercase");
+				}
 				if (_symbl.HasValue)
+				{
 					Assert.That(_symbl.Value, Is.True, "Symbol");
+				}
 			}
 		}
 
@@ -136,7 +177,7 @@ namespace Atrico.Lib.Testing.Tests
 				for (uint length = 0; length < _length; ++length)
 				{
 					var str = generator.String(length);
-					Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(length, (uint)str.Length, length.ToString());
+					Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(length, (uint) str.Length, length.ToString(CultureInfo.InvariantCulture));
 				}
 			}
 
@@ -144,7 +185,7 @@ namespace Atrico.Lib.Testing.Tests
 			public void IncludeSpaces()
 			{
 				var generator = new RandomValueGenerator();
-				string str = generator.String(RandomValueGenerator.CharsToInclude.Space, _length);
+				var str = generator.String(RandomValueGenerator.CharsToInclude.Space, _length);
 				ValidateString(str, CharTypesAllowed.Space);
 			}
 
@@ -152,7 +193,7 @@ namespace Atrico.Lib.Testing.Tests
 			public void IncludeDigits()
 			{
 				var generator = new RandomValueGenerator();
-				string str = generator.String(RandomValueGenerator.CharsToInclude.Digits, _length);
+				var str = generator.String(RandomValueGenerator.CharsToInclude.Digits, _length);
 				ValidateString(str, CharTypesAllowed.Digit);
 			}
 
@@ -160,7 +201,7 @@ namespace Atrico.Lib.Testing.Tests
 			public void IncludeUpper()
 			{
 				var generator = new RandomValueGenerator();
-				string str = generator.String(RandomValueGenerator.CharsToInclude.Uppercase, _length);
+				var str = generator.String(RandomValueGenerator.CharsToInclude.Uppercase, _length);
 				ValidateString(str, CharTypesAllowed.Upper);
 			}
 
@@ -168,7 +209,7 @@ namespace Atrico.Lib.Testing.Tests
 			public void IncludeLower()
 			{
 				var generator = new RandomValueGenerator();
-				string str = generator.String(RandomValueGenerator.CharsToInclude.LowerCase, _length);
+				var str = generator.String(RandomValueGenerator.CharsToInclude.LowerCase, _length);
 				ValidateString(str, CharTypesAllowed.Lower);
 			}
 
@@ -176,7 +217,7 @@ namespace Atrico.Lib.Testing.Tests
 			public void IncludeSymbol()
 			{
 				var generator = new RandomValueGenerator();
-				string str = generator.String(RandomValueGenerator.CharsToInclude.Symbols, _length);
+				var str = generator.String(RandomValueGenerator.CharsToInclude.Symbols, _length);
 				ValidateString(str, CharTypesAllowed.Symbol);
 			}
 
@@ -184,7 +225,7 @@ namespace Atrico.Lib.Testing.Tests
 			public void IncludeLetters()
 			{
 				var generator = new RandomValueGenerator();
-				string str = generator.String(RandomValueGenerator.CharsToInclude.Letters, _length);
+				var str = generator.String(RandomValueGenerator.CharsToInclude.Letters, _length);
 				ValidateString(str, CharTypesAllowed.Upper | CharTypesAllowed.Lower);
 			}
 
@@ -192,7 +233,7 @@ namespace Atrico.Lib.Testing.Tests
 			public void IncludeAlphanumeric()
 			{
 				var generator = new RandomValueGenerator();
-				string str = generator.String(RandomValueGenerator.CharsToInclude.AlphaNumeric, _length);
+				var str = generator.String(RandomValueGenerator.CharsToInclude.AlphaNumeric, _length);
 				ValidateString(str, CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit);
 			}
 
@@ -200,18 +241,18 @@ namespace Atrico.Lib.Testing.Tests
 			public void IncludeAll()
 			{
 				var generator = new RandomValueGenerator();
-				string str = generator.String(RandomValueGenerator.CharsToInclude.All, _length);
+				var str = generator.String(RandomValueGenerator.CharsToInclude.All, _length);
 				ValidateString(str,
-					CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit | CharTypesAllowed.Space | CharTypesAllowed.Symbol);
+				               CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit | CharTypesAllowed.Space | CharTypesAllowed.Symbol);
 			}
 
 			[Test]
 			public void IncludeDefault()
 			{
 				var generator = new RandomValueGenerator();
-				string str = generator.String(_length);
+				var str = generator.String(_length);
 				ValidateString(str,
-					CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit | CharTypesAllowed.Space | CharTypesAllowed.Symbol);
+				               CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit | CharTypesAllowed.Space | CharTypesAllowed.Symbol);
 			}
 		}
 
@@ -230,16 +271,16 @@ namespace Atrico.Lib.Testing.Tests
 			public void Count()
 			{
 				var generator = new RandomValueGenerator();
-				string[] list = generator.Strings(_count);
-				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint)list.Length);
+				var list = generator.Strings(_count);
+				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint) list.Length);
 			}
 
 			[Test]
 			public void IncludeSpaces()
 			{
 				var generator = new RandomValueGenerator();
-				string[] list = generator.Strings(RandomValueGenerator.CharsToInclude.Space, _count);
-				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint)list.Length);
+				var list = generator.Strings(RandomValueGenerator.CharsToInclude.Space, _count);
+				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint) list.Length);
 				ValidateStrings(list, CharTypesAllowed.Space);
 			}
 
@@ -247,8 +288,8 @@ namespace Atrico.Lib.Testing.Tests
 			public void IncludeDigits()
 			{
 				var generator = new RandomValueGenerator();
-				string[] list = generator.Strings(RandomValueGenerator.CharsToInclude.Digits, _count);
-				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint)list.Length);
+				var list = generator.Strings(RandomValueGenerator.CharsToInclude.Digits, _count);
+				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint) list.Length);
 				ValidateStrings(list, CharTypesAllowed.Digit);
 			}
 
@@ -256,8 +297,8 @@ namespace Atrico.Lib.Testing.Tests
 			public void IncludeUpper()
 			{
 				var generator = new RandomValueGenerator();
-				string[] list = generator.Strings(RandomValueGenerator.CharsToInclude.Uppercase, _count);
-				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint)list.Length);
+				var list = generator.Strings(RandomValueGenerator.CharsToInclude.Uppercase, _count);
+				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint) list.Length);
 				ValidateStrings(list, CharTypesAllowed.Upper);
 			}
 
@@ -265,8 +306,8 @@ namespace Atrico.Lib.Testing.Tests
 			public void IncludeLower()
 			{
 				var generator = new RandomValueGenerator();
-				string[] list = generator.Strings(RandomValueGenerator.CharsToInclude.LowerCase, _count);
-				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint)list.Length);
+				var list = generator.Strings(RandomValueGenerator.CharsToInclude.LowerCase, _count);
+				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint) list.Length);
 				ValidateStrings(list, CharTypesAllowed.Lower);
 			}
 
@@ -274,8 +315,8 @@ namespace Atrico.Lib.Testing.Tests
 			public void IncludeSymbol()
 			{
 				var generator = new RandomValueGenerator();
-				string[] list = generator.Strings(RandomValueGenerator.CharsToInclude.Symbols, _count);
-				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint)list.Length);
+				var list = generator.Strings(RandomValueGenerator.CharsToInclude.Symbols, _count);
+				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint) list.Length);
 				ValidateStrings(list, CharTypesAllowed.Symbol);
 			}
 
@@ -283,8 +324,8 @@ namespace Atrico.Lib.Testing.Tests
 			public void IncludeLetters()
 			{
 				var generator = new RandomValueGenerator();
-				string[] list = generator.Strings(RandomValueGenerator.CharsToInclude.Letters, _count);
-				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint)list.Length);
+				var list = generator.Strings(RandomValueGenerator.CharsToInclude.Letters, _count);
+				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint) list.Length);
 				ValidateStrings(list, CharTypesAllowed.Upper | CharTypesAllowed.Lower);
 			}
 
@@ -292,8 +333,8 @@ namespace Atrico.Lib.Testing.Tests
 			public void IncludeAlphanumeric()
 			{
 				var generator = new RandomValueGenerator();
-				string[] list = generator.Strings(RandomValueGenerator.CharsToInclude.AlphaNumeric, _count);
-				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint)list.Length);
+				var list = generator.Strings(RandomValueGenerator.CharsToInclude.AlphaNumeric, _count);
+				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint) list.Length);
 				ValidateStrings(list, CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit);
 			}
 
@@ -301,20 +342,20 @@ namespace Atrico.Lib.Testing.Tests
 			public void IncludeAll()
 			{
 				var generator = new RandomValueGenerator();
-				string[] list = generator.Strings(RandomValueGenerator.CharsToInclude.All, _count);
-				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint)list.Length);
+				var list = generator.Strings(RandomValueGenerator.CharsToInclude.All, _count);
+				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint) list.Length);
 				ValidateStrings(list,
-					CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit | CharTypesAllowed.Symbol | CharTypesAllowed.Space);
+				                CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit | CharTypesAllowed.Symbol | CharTypesAllowed.Space);
 			}
 
 			[Test]
 			public void IncludeDefault()
 			{
 				var generator = new RandomValueGenerator();
-				string[] list = generator.Strings(_count);
-				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint)list.Length);
+				var list = generator.Strings(_count);
+				Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(_count, (uint) list.Length);
 				ValidateStrings(list,
-					CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit | CharTypesAllowed.Symbol | CharTypesAllowed.Space);
+				                CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit | CharTypesAllowed.Symbol | CharTypesAllowed.Space);
 			}
 		}
 
@@ -327,44 +368,44 @@ namespace Atrico.Lib.Testing.Tests
 				var generator = new RandomValueGenerator();
 				{
 					generator.DefaultCharsToInclude = RandomValueGenerator.CharsToInclude.Space;
-					string str = generator.String(_length);
+					var str = generator.String(_length);
 					ValidateString(str, CharTypesAllowed.Space);
 				}
 				{
 					generator.DefaultCharsToInclude = RandomValueGenerator.CharsToInclude.Digits;
-					string str = generator.String(_length);
+					var str = generator.String(_length);
 					ValidateString(str, CharTypesAllowed.Digit);
 				}
 				{
 					generator.DefaultCharsToInclude = RandomValueGenerator.CharsToInclude.Uppercase;
-					string str = generator.String(_length);
+					var str = generator.String(_length);
 					ValidateString(str, CharTypesAllowed.Upper);
 				}
 				{
 					generator.DefaultCharsToInclude = RandomValueGenerator.CharsToInclude.LowerCase;
-					string str = generator.String(_length);
+					var str = generator.String(_length);
 					ValidateString(str, CharTypesAllowed.Lower);
 				}
 				{
 					generator.DefaultCharsToInclude = RandomValueGenerator.CharsToInclude.Symbols;
-					string str = generator.String(_length);
+					var str = generator.String(_length);
 					ValidateString(str, CharTypesAllowed.Symbol);
 				}
 				{
 					generator.DefaultCharsToInclude = RandomValueGenerator.CharsToInclude.Letters;
-					string str = generator.String(_length);
+					var str = generator.String(_length);
 					ValidateString(str, CharTypesAllowed.Upper | CharTypesAllowed.Lower);
 				}
 				{
 					generator.DefaultCharsToInclude = RandomValueGenerator.CharsToInclude.AlphaNumeric;
-					string str = generator.String(_length);
+					var str = generator.String(_length);
 					ValidateString(str, CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit);
 				}
 				{
 					generator.DefaultCharsToInclude = RandomValueGenerator.CharsToInclude.All;
-					string str = generator.String(_length);
+					var str = generator.String(_length);
 					ValidateString(str,
-						CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit | CharTypesAllowed.Symbol | CharTypesAllowed.Space);
+					               CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit | CharTypesAllowed.Symbol | CharTypesAllowed.Space);
 				}
 			}
 
@@ -375,8 +416,8 @@ namespace Atrico.Lib.Testing.Tests
 				for (uint length = 200; length < 400; ++length)
 				{
 					generator.DefaultStringLength = length;
-					string str = generator.String(RandomValueGenerator.CharsToInclude.All);
-					Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(length, (uint)str.Length, length.ToString());
+					var str = generator.String(RandomValueGenerator.CharsToInclude.All);
+					Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(length, (uint) str.Length, length.ToString(CultureInfo.InvariantCulture));
 				}
 			}
 
@@ -389,8 +430,8 @@ namespace Atrico.Lib.Testing.Tests
 					for (uint length = 100; length < 200; ++length)
 					{
 						generator.DefaultStringLength = length;
-						string str = generator.String();
-						Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(length, (uint)str.Length, length.ToString());
+						var str = generator.String();
+						Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(length, (uint) str.Length, length.ToString(CultureInfo.InvariantCulture));
 						ValidateString(str, CharTypesAllowed.Space);
 					}
 				}
@@ -399,8 +440,8 @@ namespace Atrico.Lib.Testing.Tests
 					for (uint length = 100; length < 200; ++length)
 					{
 						generator.DefaultStringLength = length;
-						string str = generator.String();
-						Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(length, (uint)str.Length, length.ToString());
+						var str = generator.String();
+						Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(length, (uint) str.Length, length.ToString(CultureInfo.InvariantCulture));
 						ValidateString(str, CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit);
 					}
 				}
@@ -449,7 +490,7 @@ namespace Atrico.Lib.Testing.Tests
 					generator.DefaultCharsToInclude = RandomValueGenerator.CharsToInclude.All;
 					var list = generator.Strings(_count, _length);
 					ValidateStrings(list,
-						CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit | CharTypesAllowed.Symbol | CharTypesAllowed.Space);
+					                CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit | CharTypesAllowed.Symbol | CharTypesAllowed.Space);
 				}
 			}
 
@@ -460,8 +501,8 @@ namespace Atrico.Lib.Testing.Tests
 				for (uint count = 0; count < 100; ++count)
 				{
 					generator.DefaultStringListCount = count;
-					string[] list = generator.Strings(RandomValueGenerator.CharsToInclude.All);
-					Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(count, (uint)list.Length, count.ToString());
+					var list = generator.Strings(RandomValueGenerator.CharsToInclude.All);
+					Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(count, (uint) list.Length, count.ToString(CultureInfo.InvariantCulture));
 				}
 			}
 
@@ -474,8 +515,8 @@ namespace Atrico.Lib.Testing.Tests
 					for (uint count = 100; count < 200; ++count)
 					{
 						generator.DefaultStringListCount = count;
-						string[] list = generator.Strings();
-						Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(count, (uint)list.Length, count.ToString());
+						var list = generator.Strings();
+						Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(count, (uint) list.Length, count.ToString(CultureInfo.InvariantCulture));
 						ValidateStrings(list, CharTypesAllowed.Space);
 					}
 				}
@@ -484,8 +525,8 @@ namespace Atrico.Lib.Testing.Tests
 					for (uint count = 100; count < 200; ++count)
 					{
 						generator.DefaultStringListCount = count;
-						string[] list = generator.Strings();
-						Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(count, (uint)list.Length, count.ToString());
+						var list = generator.Strings();
+						Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(count, (uint) list.Length, count.ToString(CultureInfo.InvariantCulture));
 						ValidateStrings(list, CharTypesAllowed.Upper | CharTypesAllowed.Lower | CharTypesAllowed.Digit);
 					}
 				}

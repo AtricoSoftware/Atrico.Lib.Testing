@@ -3,5 +3,4 @@
 [assembly: AssemblyTitle("Atrico.Lib.Testing.Tests")]
 [assembly: AssemblyProduct("Atrico.Lib.Testing.Tests")]
 [assembly: AssemblyDescription("Tests for Atrico.Lib.Testing")]
-
 [assembly: AssemblyVersion("1.0.0.0")]

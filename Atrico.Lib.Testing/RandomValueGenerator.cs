@@ -39,7 +39,7 @@ namespace Atrico.Lib.Testing
 			char ch;
 			do
 			{
-				ch = (char)_random.Next(32, 128);
+				ch = (char) _random.Next(32, 128);
 			} while (CharNotValid(ch, include));
 			return ch;
 		}
@@ -47,13 +47,21 @@ namespace Atrico.Lib.Testing
 		private bool CharNotValid(char ch, CharsToInclude include)
 		{
 			if (ch == ' ')
+			{
 				return !include.Contains(CharsToInclude.Space);
+			}
 			if ('0' <= ch && ch <= '9')
+			{
 				return !include.Contains(CharsToInclude.Digits);
+			}
 			if ('a' <= ch && ch <= 'z')
+			{
 				return !include.Contains(CharsToInclude.LowerCase);
+			}
 			if ('A' <= ch && ch <= 'Z')
+			{
 				return !include.Contains(CharsToInclude.Uppercase);
+			}
 			return !include.Contains(CharsToInclude.Symbols);
 		}
 
@@ -177,7 +185,7 @@ namespace Atrico.Lib.Testing
 			// Fill removed duplicates
 			while (set.Count < count)
 			{
-				set.UnionWith(Strings(include, (uint)(count-set.Count), length));
+				set.UnionWith(Strings(include, (uint) (count - set.Count), length));
 			}
 			return set.ToArray();
 		}
@@ -238,19 +246,19 @@ namespace Atrico.Lib.Testing
 		public T Value<T>()
 		{
 			var map = new Dictionary<Type, Func<object>>
-			          {
-				          {typeof(char), () => Char()},
-				          {typeof(string), String},
-				          {typeof(int), () => Integer()},
-				          {typeof(double), () => Double()}
-			          };
-			return (T)(map.ContainsKey(typeof(T)) ? map[typeof(T)].Invoke() : default(T));
+			{
+				{typeof (char), () => Char()},
+				{typeof (string), String},
+				{typeof (int), () => Integer()},
+				{typeof (double), () => Double()}
+			};
+			return (T) (map.ContainsKey(typeof (T)) ? map[typeof (T)].Invoke() : default(T));
 		}
 
 		public IEnumerable<T> Values<T>(int count)
 		{
 			var values = new List<T>(count);
-			for (int i = 0; i < count; ++i)
+			for (var i = 0; i < count; ++i)
 			{
 				values.Add(Value<T>());
 			}
@@ -264,7 +272,7 @@ namespace Atrico.Lib.Testing
 			// Fill removed duplicates
 			while (set.Count < count)
 			{
-				set.UnionWith(Values<T>(count-set.Count));
+				set.UnionWith(Values<T>(count - set.Count));
 			}
 			return set.ToArray();
 		}
@@ -280,9 +288,9 @@ namespace Atrico.Lib.Testing
 		static RandomValueGenerator()
 		{
 			_objectTypeValues = new List<ObjectTypes>();
-			foreach (var objType in Enum.GetValues(typeof(ObjectTypes)))
+			foreach (var objType in Enum.GetValues(typeof (ObjectTypes)))
 			{
-				_objectTypeValues.Add((ObjectTypes)objType);
+				_objectTypeValues.Add((ObjectTypes) objType);
 			}
 		}
 
@@ -292,7 +300,7 @@ namespace Atrico.Lib.Testing
 	internal static class CharsToIncludeHelper
 	{
 		public static bool Contains(this RandomValueGenerator.CharsToInclude flags,
-			RandomValueGenerator.CharsToInclude test)
+		                            RandomValueGenerator.CharsToInclude test)
 		{
 			return (flags & test) != 0;
 		}

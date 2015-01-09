@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 
 namespace Atrico.Lib.Testing
 {
@@ -73,16 +74,7 @@ namespace Atrico.Lib.Testing
 		{
 			protected override IEnumerable TheValues
 			{
-				get
-				{
-					foreach (var v1 in new T1())
-					{
-						foreach (var v2 in new T2())	
-						{
-							yield return new object[] {v1, v2};
-						}
-					}
-				}
+				get { return (from object v1 in new T1() from object v2 in new T2() select new[] {v1, v2}); }
 			}
 		}
 
@@ -97,19 +89,7 @@ namespace Atrico.Lib.Testing
 		{
 			protected override IEnumerable TheValues
 			{
-				get
-				{
-					foreach (var v1 in new T1())
-					{
-						foreach (var v2 in new T2())
-						{
-							foreach (var v3 in new T3())
-							{
-								yield return new object[] {v1, v2, v3};
-							}
-						}
-					}
-				}
+				get { return (from object v1 in new T1() from object v2 in new T2() from object v3 in new T3() select new[] {v1, v2, v3}); }
 			}
 		}
 	}

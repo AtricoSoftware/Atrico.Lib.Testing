@@ -7,7 +7,7 @@ namespace Atrico.Lib.Testing.NUnitAttributes
 	{
 		// Summary:
 		//     Default constructor
-		public TestFixtureAttribute() : base()
+		public TestFixtureAttribute()
 		{
 		}
 

@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<package >
+
+<package>
   <metadata>
     <id>$id$</id>
     <version>$version$</version>
@@ -13,12 +14,12 @@
     <description>$description$</description>
     <copyright>$copyright$</copyright>
     <releaseNotes>
-1.2.0.0:
-  Missing type re-added (TestPODTypes)
-1.1.0.0:
-  Upgraded to NUnit 2.6.4
-1.0.0.0:
-  Initial release
+      1.2.0.0:
+      Missing type re-added (TestPODTypes)
+      1.1.0.0:
+      Upgraded to NUnit 2.6.4
+      1.0.0.0:
+      Initial release
     </releaseNotes>
   </metadata>
   <files>
