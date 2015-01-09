@@ -58,6 +58,7 @@
     <Compile Include="RandomValueGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestFixtureBase.cs" />
+    <Compile Include="TestPODTypes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Atrico.Lib.Testing.nuspec" />
