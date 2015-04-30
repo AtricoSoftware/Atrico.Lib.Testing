@@ -1,74 +1,3 @@
-<<<<<<< HEAD
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EF628FF6-5EE4-4043-82FE-8CAF3AB36787}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Atrico.Lib.Testing</RootNamespace>
-    <AssemblyName>Atrico.Lib.Testing</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <SccProjectName>Svn</SccProjectName>
-    <SccLocalPath>Svn</SccLocalPath>
-    <SccAuxPath>Svn</SccAuxPath>
-    <SccProvider>SubversionScc</SccProvider>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Catch.cs" />
-    <Compile Include="DataSources.cs" />
-    <Compile Include="Mocks\IInvokeDelegate.cs" />
-    <Compile Include="NUnitAttributes\IgnoreAttribute.cs" />
-    <Compile Include="NUnitAttributes\TestAttribute.cs" />
-    <Compile Include="NUnitAttributes\TestCaseSourceAttribute.cs" />
-    <Compile Include="NUnitAttributes\TestFixtureAttribute.cs" />
-    <Compile Include="NUnitAttributes\ValueSourceAttribute.cs" />
-    <Compile Include="Properties\CommonAssemblyInfo.cs" />
-    <Compile Include="RandomValueGenerator.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestFixtureBase.cs" />
-    <Compile Include="TestPODTypes.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Atrico.Lib.Testing.nuspec" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-=======
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
@@ -137,7 +66,6 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
->>>>>>> origin/master
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
