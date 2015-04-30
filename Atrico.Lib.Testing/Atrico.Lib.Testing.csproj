@@ -50,6 +50,7 @@
     <Compile Include="Catch.cs" />
     <Compile Include="DataSources.cs" />
     <Compile Include="Mocks\IInvokeDelegate.cs" />
+    <Compile Include="NUnitAttributes\IgnoreAttribute.cs" />
     <Compile Include="NUnitAttributes\TestAttribute.cs" />
     <Compile Include="NUnitAttributes\TestCaseSourceAttribute.cs" />
     <Compile Include="NUnitAttributes\TestFixtureAttribute.cs" />

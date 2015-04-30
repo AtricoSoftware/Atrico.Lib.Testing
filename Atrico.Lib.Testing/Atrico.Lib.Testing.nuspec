@@ -14,6 +14,8 @@
     <description>$description$</description>
     <copyright>$copyright$</copyright>
     <releaseNotes>
+      1.2.1.0:
+      Ignore attribute added
       1.2.0.0:
       Missing type re-added (TestPODTypes)
       1.1.0.0:
@@ -24,7 +26,6 @@
   </metadata>
   <files>
     <file src="bin\Release\$id$.*" target="lib\net45" />
-    <file src="..\*.40\bin\Release\$id$.*" target="lib\net40" />
     <file src="..\..\License.txt" target="docs" />
   </files>
 </package>
