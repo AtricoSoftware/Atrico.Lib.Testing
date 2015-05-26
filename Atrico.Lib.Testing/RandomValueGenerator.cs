@@ -237,10 +237,10 @@ namespace Atrico.Lib.Testing
 			return _random.Next();
 		}
 
-		public double Double()
+		public double Double(int dps = 6)
 		{
 			// TODO - Test
-			return _random.NextDouble();
+			return Math.Round(_random.NextDouble(), dps);
 		}
 
 		public T Value<T>()
