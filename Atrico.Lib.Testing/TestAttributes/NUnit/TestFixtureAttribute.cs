@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Atrico.Lib.Testing.NUnitAttributes
+namespace Atrico.Lib.Testing.TestAttributes.NUnit
 {
 	[AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = true)]
-	public class TestFixtureAttribute : NUnit.Framework.TestFixtureAttribute
+	public class TestFixtureAttribute : global::NUnit.Framework.TestFixtureAttribute
 	{
 		// Summary:
 		//     Default constructor

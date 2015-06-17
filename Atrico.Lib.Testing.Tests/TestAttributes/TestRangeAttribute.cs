@@ -2,9 +2,10 @@
 using Atrico.Lib.Assertions;
 using Atrico.Lib.Assertions.Constraints;
 using Atrico.Lib.Assertions.Elements;
-using Atrico.Lib.Testing.NUnitAttributes;
+using Atrico.Lib.Testing.TestAttributes;
+using Atrico.Lib.Testing.TestAttributes.NUnit;
 
-namespace Atrico.Lib.Testing.Tests.NUnitAttributes
+namespace Atrico.Lib.Testing.Tests.TestAttributes
 {
     [TestFixture]
     public class TestRangeAttribute : TestFixtureBase
@@ -80,13 +81,5 @@ namespace Atrico.Lib.Testing.Tests.NUnitAttributes
             Debug.WriteLine("Value - {0} ({1})", value, value.GetType().Name);
             Assert.That(Value.Of(value).Is().Between(2.5, 6.5), "Within range");
         }
-
-        //[Test]
-        //public void TestDecimal([Range(2m, 6m)] decimal value)
-        //{
-        //    // Assert
-        //    Debug.WriteLine("Value - {0} ({1})", value, value.GetType().Name);
-        //    Assert.That(Value.Of(value).Is().Between<decimal>(2m, 6m), "Within range");
-        //}
     }
 }
