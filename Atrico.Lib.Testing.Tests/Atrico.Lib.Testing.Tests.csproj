@@ -11,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Atrico.Lib.Testing.Tests</RootNamespace>
     <AssemblyName>Atrico.Lib.Testing.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkProfile />
@@ -41,21 +41,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Atrico.Lib.Assertions, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atrico.Lib.Assertions.3.2.4.0\lib\net452\Atrico.Lib.Assertions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Atrico.Lib.Common, Version=1.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atrico.Lib.Common.1.10.0.0\lib\net452\Atrico.Lib.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Atrico.Lib.DomainModel, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atrico.Lib.DomainModel.2.0.0.0\lib\net452\Atrico.Lib.DomainModel.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
@@ -77,6 +65,18 @@
     <Compile Include="TestCatch.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Atrico.Lib.Assertions\Atrico.Lib.Assertions\Atrico.Lib.Assertions.csproj">
+      <Project>{84481d71-f7f0-4c10-87ec-b5717c2860de}</Project>
+      <Name>Atrico.Lib.Assertions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Atrico.Lib.Common\Atrico.Lib.Common\Atrico.Lib.Common.csproj">
+      <Project>{983a29ac-8a3b-4d78-81d7-bcaf9b520877}</Project>
+      <Name>Atrico.Lib.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Atrico.Lib.DomainModel\Atrico.Lib.DomainModel\Atrico.Lib.DomainModel.csproj">
+      <Project>{5d118a7a-c9db-4d87-8315-71d7f0353b39}</Project>
+      <Name>Atrico.Lib.DomainModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Atrico.Lib.Testing\Atrico.Lib.Testing.csproj">
       <Project>{ef628ff6-5ee4-4043-82fe-8caf3ab36787}</Project>
       <Name>Atrico.Lib.Testing</Name>
@@ -84,9 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="_TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
