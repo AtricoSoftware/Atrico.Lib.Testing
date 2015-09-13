@@ -14,6 +14,8 @@
     <description>$description$</description>
     <copyright>$copyright$</copyright>
     <releaseNotes>
+      1.5.0.0
+      Multiple .net versions
       1.4.0.0
       RunContextInfo added to TestFixtureBase
       1.3.9.0
