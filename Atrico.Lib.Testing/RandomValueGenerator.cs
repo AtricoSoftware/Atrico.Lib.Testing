@@ -250,7 +250,8 @@ namespace Atrico.Lib.Testing
 				{typeof (char), () => Char()},
 				{typeof (string), String},
 				{typeof (int), () => Integer()},
-				{typeof (double), () => Double()}
+				{typeof (double), () => Double()},
+				{typeof (decimal), () => (decimal)Double()}
 			};
 			return (T) (map.ContainsKey(typeof (T)) ? map[typeof (T)].Invoke() : default(T));
 		}
