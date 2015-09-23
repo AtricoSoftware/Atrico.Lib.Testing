@@ -87,6 +87,8 @@
     <Compile Include="Mocks\IInvokeDelegate.cs" />
     <Compile Include="Properties\AssemblyVersion.cs" />
     <Compile Include="TestAttributes\NUnit\RequiresSTAAttribute.cs" />
+    <Compile Include="TestAttributes\NUnit\SetUpAttribute.cs" />
+    <Compile Include="TestAttributes\NUnit\TearDownAttribute.cs" />
     <Compile Include="TestAttributes\NUnit\ValuesAttribute.cs" />
     <Compile Include="TestAttributes\RangeAttribute.cs" />
     <Compile Include="TestAttributes\NUnit\IgnoreAttribute.cs" />
