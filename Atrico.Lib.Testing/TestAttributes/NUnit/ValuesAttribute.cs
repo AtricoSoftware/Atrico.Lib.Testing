@@ -1,5 +1,8 @@
+using System;
+
 namespace Atrico.Lib.Testing.TestAttributes.NUnit
 {
+    [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false, Inherited = false)]
     public class ValuesAttribute : global::NUnit.Framework.ValuesAttribute
     {
         public ValuesAttribute(object arg1)

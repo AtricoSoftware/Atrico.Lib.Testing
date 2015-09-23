@@ -1,10 +1,9 @@
 ﻿using System;
 
-// ReSharper disable once CheckNamespace
-
 namespace Atrico.Lib.Testing.TestAttributes.NUnit
 {
-	public class TestCaseSourceAttribute : global::NUnit.Framework.TestCaseSourceAttribute
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = false)]
+    public class TestCaseSourceAttribute : global::NUnit.Framework.TestCaseSourceAttribute
 	{
 		public TestCaseSourceAttribute(Type sourceType) : base(sourceType)
 		{

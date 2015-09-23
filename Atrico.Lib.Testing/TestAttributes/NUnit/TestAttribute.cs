@@ -1,6 +1,9 @@
-﻿namespace Atrico.Lib.Testing.TestAttributes.NUnit
+﻿using System;
+
+namespace Atrico.Lib.Testing.TestAttributes.NUnit
 {
-	public class TestAttribute : global::NUnit.Framework.TestAttribute
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
+    public class TestAttribute : global::NUnit.Framework.TestAttribute
 	{
 	}
 }
